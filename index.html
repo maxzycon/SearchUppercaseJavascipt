@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: whitesmoke !important;min-height:100vh">
+        <input value="" id="text_id"/>
+        <div id="output" style="padding-bottom:5px;background-color: whitesmoke;color:green">
+
+        </div>
+        <button style="background-color: blue;color:white;padding:5px;display:block;margin-top: 10px;" onclick="cari('text_id')">Submit</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        
+        const cari = (id) =>{
+            let text = $("#"+id).val();
+            const array = text.split("");
+            const pattern = /[A-Z]/;
+            let filter = array.filter(function (element){
+                return element.match(pattern);
+            })
+            document.getElementById("output").innerHTML = "Jumlah huruf besar adalah " + filter.length
+        }
+    </script>
+</body>
+</html>
