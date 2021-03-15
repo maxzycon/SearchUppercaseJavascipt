@@ -19,13 +19,27 @@
     <script>
         
         const cari = (id) =>{
-            let text = $("#"+id).val();
-            const array = text.split("");
-            const pattern = /[A-Z]/;
-            let filter = array.filter(function (element){
-                return element.match(pattern);
-            })
-            document.getElementById("output").innerHTML = "Jumlah huruf besar adalah " + filter.length
+                let text = $("#"+id).val();
+                if(!text || text == "")
+                {
+                    return alert("field tidak boleh kosong");
+                }
+                const array = text.split("");
+                const patternNumerinc = /[0-9]/;
+                let filterNumeric = array.filter(function (element){
+                    return element.match(patternNumerinc)
+                })
+                if(filterNumeric.length >= 1){
+                    return alert("Harus string");
+                }else{
+                    const patternStringUppercase = /[A-Z]/;
+                    let filteruppercase = array.filter(function (element){
+                        return element.match(patternStringUppercase)
+                    })
+
+                    let datareturn = filteruppercase.length > 0 ? "Jumlah huruf besar adalah " + filteruppercase.length : "Tidak ditemukan huruf besar";
+                    document.getElementById("output").innerHTML = datareturn;
+                }
         }
     </script>
 </body>
